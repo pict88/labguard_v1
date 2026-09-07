@@ -1,4 +1,5 @@
 <?php
+//php -S 192.168.50.1:8089
 // 1. Define the log file path
 $logFile = '/home/exam/Desktop/SERVER/Logs.log';
 
