@@ -24,7 +24,7 @@ if [ "$EVENT" != "dhcp4-change" ]; then
     exit 0
 fi
 
-if [ ! -d "/home/$user/Desktop/FLAG" ]; then
+if [ ! -d "$FLAG" ]; then
 	echo "----------------------------------------------------------------------------------" >> $ERROR_LOG
     	echo "$(date) and [$UID] - Dispatcher fired: $IFACE $EVENT" >> $ERROR_LOG       
     	echo -e "mode: NORMAL \n----------------------------------------------------------------------------------" >> $ERROR_LOG
