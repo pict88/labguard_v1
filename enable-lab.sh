@@ -19,8 +19,8 @@ function rollback(){
 	echo "-------ROLLBACK TRIGERRED-------" >> $ERROR_LOG
 	echo "DUE TO $1" >> $ERROR_LOG
   
-	sudo nmcli connection modify "$PROFILE" ipv4.method auto ipv4.addresses "" 1>/dev/null 2>>$ERROR_LOG
-	sudo nmcli connection up "$PROFILE" 1>/dev/null 2>>$ERROR_LOG
+	nmcli connection modify "$PROFILE" ipv4.method auto ipv4.addresses "" 1>/dev/null 2>>$ERROR_LOG
+	nmcli connection up "$PROFILE" 1>/dev/null 2>>$ERROR_LOG
 
 	echo "[-] Rollback complete. Lab is safely reverted"
 	echo "--------------------------------" >> $ERROR_LOG
@@ -29,8 +29,8 @@ function rollback(){
 
 function static_network(){
 	ip addr flush dev lo scope global 2>/dev/null || true	
-	sudo nmcli connection modify "$PROFILE" ipv4.method manual ipv4.addresses "$HELPER_IP" &> /dev/null
-	sudo nmcli connection up "$PROFILE" &> /dev/null
+	nmcli connection modify "$PROFILE" ipv4.method manual ipv4.addresses "$HELPER_IP" &> /dev/null
+	nmcli connection up "$PROFILE" &> /dev/null
 }
 
 function check_isolation(){
