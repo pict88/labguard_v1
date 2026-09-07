@@ -7,7 +7,7 @@ else
     exit 1
 fi
 
-if [ ! -d /home/$user/Desktop/FLAG ]; then
+if [ ! -d "$FLAG" ]; then
 	echo "FLAG not present"
   exit 0
 fi
