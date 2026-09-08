@@ -1,5 +1,6 @@
 <?php
 // LabSentinel Monitor - Integrated PHP & MySQL Dashboard
+//php -S 0.0.0.0:8000 -t /home/exam/Desktop
 
 if (isset($_GET['api']) && $_GET['api'] === 'status') {
     header('Content-Type: application/json');
