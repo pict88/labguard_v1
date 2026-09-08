@@ -1,5 +1,4 @@
 <?php
-//php -S 192.168.50.1:8089
 // 1. Define the log file path
 $logFile = '/home/exam/Desktop/SERVER/Logs.log';
 
@@ -54,7 +53,8 @@ if ($conn) {
         }
 
         if (!empty($dbStatus)) {
-            $stmt = mysqli_prepare($conn, "INSERT INTO internet (ip, status) VALUES (?, ?) ON DUPLICATE KEY UPDATE status = VALUES(status)");
+            // UPDATED: Added 'time' to INSERT and UPDATE clauses using NOW()
+            $stmt = mysqli_prepare($conn, "INSERT INTO internet (ip, status, time) VALUES (?, ?, NOW()) ON DUPLICATE KEY UPDATE status = VALUES(status), time = NOW()");
             if ($stmt) {
                 mysqli_stmt_bind_param($stmt, "ss", $ip, $dbStatus);
                 if (!mysqli_stmt_execute($stmt)) {
